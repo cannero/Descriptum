@@ -44,6 +44,8 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$rootProject.roomVersion"
     androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
     implementation "androidx.room:room-rxjava2:$rootProject.roomVersion"
+    //android testing
+    androidTestImplementation "androidx.arch.core:core-testing:$rootProject.archCoreVersion"
     //RxJava
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.reactivexJavaVersion"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.reactivexAndroidVersion"
