@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
@@ -55,6 +56,20 @@ public class LocalDayDataSourceTest {
 
         mDataSource.getDayByDate(DAY1.getDate())
                 .test()
-                .assertComplete();
+                .assertValue(day ->
+                        day.getDate().equals(DAY1.getDate()));
+    }
+
+    @Test
+    public void updateTimeWokeUp() {
+        mDataSource.insertOrUpdateDay(DAY1).blockingAwait();
+        Timestamp timeWokeUp = new Timestamp(5000);
+        Day withTimestamp = new Day(DATE1, timeWokeUp, null);
+        mDataSource.insertOrUpdateDay(withTimestamp).blockingAwait();
+
+        mDataSource.getDayByDate(DATE1)
+                .test()
+                .assertValue(day ->
+                        day.getTimeWokeUp().equals(timeWokeUp));
     }
 }
