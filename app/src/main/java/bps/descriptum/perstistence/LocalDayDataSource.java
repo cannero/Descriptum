@@ -1,6 +1,7 @@
 package bps.descriptum.perstistence;
 
 import java.util.Date;
+import java.util.List;
 
 import bps.descriptum.DayDataSource;
 import io.reactivex.Completable;
@@ -11,6 +12,11 @@ public class LocalDayDataSource implements DayDataSource {
     private final DayDao mDayDao;
     public LocalDayDataSource(DayDao dayDao){
         mDayDao = dayDao;
+    }
+
+    @Override
+    public Flowable<List<Day>> getDays() {
+        return mDayDao.getDays();
     }
 
     @Override
