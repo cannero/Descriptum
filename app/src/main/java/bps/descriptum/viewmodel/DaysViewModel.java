@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.Date;
 import java.util.List;
 
 import bps.descriptum.DayDataSource;
@@ -28,6 +29,9 @@ public class DaysViewModel extends ViewModel {
         mDayDataSource = dayDataSource;
         mSchedulerProvider = schedulerProvider;
         observeGetAllDays();
+        //// TODO: 5/25/2019 remove
+        insertOrUpdateDay(new Day(new Date(1000)));
+        insertOrUpdateDay(new Day(new Date(10000)));
     }
 
     @Override
@@ -36,11 +40,11 @@ public class DaysViewModel extends ViewModel {
         mDisposable.clear();
     }
 
-    LiveData<List<Day>> getAllDays(){
+    public LiveData<List<Day>> getAllDays(){
         return mAllDays;
     }
 
-    LiveData<Throwable> getError(){
+    public LiveData<Throwable> getError(){
         return mErrorResponse;
     }
 
@@ -56,6 +60,16 @@ public class DaysViewModel extends ViewModel {
                         }
                 )
         );
+    }
+
+    private void insertOrUpdateDay(Day day){
+        mDisposable.add(mDayDataSource.insertOrUpdateDay(day)
+        .subscribeOn(mSchedulerProvider.io())
+        .observeOn(mSchedulerProvider.ui())
+                //// TODO: 5/25/2019 add method for observer
+        .subscribe(() ->Log.d(TAG, "day inserted"),
+                throwable -> Log.e(TAG, "DayInsertOrUpdate failed: ", throwable)
+        ));
     }
 
 }

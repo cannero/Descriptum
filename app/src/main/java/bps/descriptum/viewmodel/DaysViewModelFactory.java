@@ -12,7 +12,7 @@ public class DaysViewModelFactory implements ViewModelProvider.Factory {
     private final DayDataSource mDayDataSource;
     private final SchedulerProvider mSchedulerProvider;
 
-    DaysViewModelFactory(DayDataSource dayDataSource, SchedulerProvider schedulerProvider){
+    public DaysViewModelFactory(DayDataSource dayDataSource, SchedulerProvider schedulerProvider){
         mDayDataSource = dayDataSource;
         mSchedulerProvider = schedulerProvider;
     }

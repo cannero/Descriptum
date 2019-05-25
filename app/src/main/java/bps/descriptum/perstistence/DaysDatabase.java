@@ -14,7 +14,7 @@ public abstract class DaysDatabase extends RoomDatabase {
 
     private static volatile DaysDatabase INSTANCE;
 
-    public static DaysDatabase getDatabase(final Context context){
+    public static DaysDatabase getInstance(final Context context){
         if(INSTANCE == null){
             synchronized(DaysDatabase.class){
                 if(INSTANCE == null){

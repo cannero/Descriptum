@@ -27,7 +27,7 @@ public class DayListAdapter extends RecyclerView.Adapter<DayListAdapter.DayListI
     private final LayoutInflater mInflater;
     private List<Day> mDays;
 
-    DayListAdapter(Context context) {
+    public DayListAdapter(Context context) {
         mInflater = LayoutInflater.from(context);
     }
 
@@ -56,7 +56,7 @@ public class DayListAdapter extends RecyclerView.Adapter<DayListAdapter.DayListI
         return 0;
     }
 
-    void setDays(List<Day> days) {
+    public void setDays(List<Day> days) {
         mDays = days;
         notifyDataSetChanged();
     }
