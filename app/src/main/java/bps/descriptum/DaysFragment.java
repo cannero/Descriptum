@@ -1,5 +1,6 @@
 package bps.descriptum;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -13,8 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.Date;
+
+import bps.descriptum.perstistence.Day;
 import bps.descriptum.utilities.InjectorUtil;
+import bps.descriptum.view.DatePickerDialogFragment;
 import bps.descriptum.view.DayListAdapter;
 import bps.descriptum.viewmodel.DaysViewModel;
 import bps.descriptum.viewmodel.DaysViewModelFactory;
@@ -42,5 +50,17 @@ public class DaysFragment extends Fragment {
         DaysViewModelFactory daysViewModelFactory = InjectorUtil.provideDaysViewModelFactory(context);
         mDaysViewModel = ViewModelProviders.of(this, daysViewModelFactory).get(DaysViewModel.class);
         mDaysViewModel.getAllDays().observe(this, days -> adapter.setDays(days));
+
+        FloatingActionButton floatingActionButton = getView().findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialogFragment datePicker = new DatePickerDialogFragment();
+                datePicker.show(getFragmentManager(), "uniqueTag");
+                //TODO show day selector
+                //show days detail fragment
+                //add day to db in detail fragment
+            }
+        });
     }
 }

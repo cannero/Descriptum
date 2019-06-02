@@ -19,8 +19,7 @@ public class LocalDayDataSourceTest {
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
-    private static final Date DATE1 = new Date(10000);
-    private static final Day DAY1 = new Day(DATE1);
+    private static final Day DAY1 = new Day(2018, 4, 3);
 
     private DaysDatabase mDatabase;
     private LocalDayDataSource mDataSource;
@@ -44,10 +43,11 @@ public class LocalDayDataSourceTest {
 
     @Test
     public void getDayByDateOnEmptyDatabase(){
-        mDataSource.getDayByDate(DATE1)
+        final Date date = new Date(10000);
+
+        mDataSource.getDayByDate(date)
                 .test()
-                .assertValue( day ->
-                        day == null);
+                .assertNoValues();
     }
 
     @Test
@@ -63,11 +63,12 @@ public class LocalDayDataSourceTest {
     @Test
     public void updateTimeWokeUp() {
         mDataSource.insertOrUpdateDay(DAY1).blockingAwait();
+        Date date = DAY1.getDate();
         Timestamp timeWokeUp = new Timestamp(5000);
-        Day withTimestamp = new Day(DATE1, timeWokeUp, null);
+        Day withTimestamp = new Day(date, timeWokeUp, null);
         mDataSource.insertOrUpdateDay(withTimestamp).blockingAwait();
 
-        mDataSource.getDayByDate(DATE1)
+        mDataSource.getDayByDate(date)
                 .test()
                 .assertValue(day ->
                         day.getTimeWokeUp().equals(timeWokeUp));

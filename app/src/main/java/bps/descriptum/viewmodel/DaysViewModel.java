@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import bps.descriptum.DayDataSource;
 import bps.descriptum.perstistence.Day;
@@ -30,8 +30,11 @@ public class DaysViewModel extends ViewModel {
         mSchedulerProvider = schedulerProvider;
         observeGetAllDays();
         //// TODO: 5/25/2019 remove
-        insertOrUpdateDay(new Day(new Date(1000)));
-        insertOrUpdateDay(new Day(new Date(10000)));
+        Executors.newSingleThreadExecutor().submit(() -> {
+            mDayDataSource.deleteAllDays();
+            insertOrUpdateDay(new Day(2017, 11, 8));
+            insertOrUpdateDay(new Day(2016, 3, 19));
+        });
     }
 
     @Override
@@ -46,6 +49,10 @@ public class DaysViewModel extends ViewModel {
 
     public LiveData<Throwable> getError(){
         return mErrorResponse;
+    }
+
+    public void insertOrUpdate(Day day){
+        insertOrUpdateDay(day);
     }
 
     private void observeGetAllDays(){

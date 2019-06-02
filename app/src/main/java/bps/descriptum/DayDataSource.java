@@ -14,4 +14,6 @@ public interface DayDataSource {
     Maybe<Day> getDayByDate(Date date);
 
     Completable insertOrUpdateDay(Day day);
+
+    void deleteAllDays();
 }

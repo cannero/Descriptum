@@ -9,7 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import bps.descriptum.R;
 import bps.descriptum.perstistence.Day;
@@ -42,7 +46,11 @@ public class DayListAdapter extends RecyclerView.Adapter<DayListAdapter.DayListI
     public void onBindViewHolder(@NonNull DayListItemViewHolder holder, int position) {
         if (mDays != null) {
             Day current = mDays.get(position);
-            holder.dateTextView.setText(current.getDate().toString());
+            TimeZone timeZone = TimeZone.getTimeZone("UTC");
+            SimpleDateFormat simpleDateFormat =
+                    new SimpleDateFormat("EE MMM dd yyyy", Locale.getDefault());
+            simpleDateFormat.setTimeZone(timeZone);
+            holder.dateTextView.setText(simpleDateFormat.format(current.getDate()));
         } else {
             holder.dateTextView.setText(R.string.no_days);
         }

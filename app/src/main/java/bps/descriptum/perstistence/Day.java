@@ -1,7 +1,9 @@
 package bps.descriptum.perstistence;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -25,8 +27,15 @@ public class Day {
     private Timestamp mTimeGoneToBed;
 
     @Ignore
-    public Day(Date date){
-        mDate = date;
+    public Day(int year, int month, int day){
+        TimeZone timeZone = TimeZone.getTimeZone("UTC");
+        Calendar calendarDate = Calendar.getInstance(timeZone);
+        calendarDate.set(year, month, day);
+        calendarDate.set(Calendar.HOUR_OF_DAY, 0);
+        calendarDate.set(Calendar.MINUTE, 0);
+        calendarDate.set(Calendar.SECOND, 0);
+        calendarDate.set(Calendar.MILLISECOND, 0);
+        mDate = calendarDate.getTime();
     }
 
     public Day(Date date, Timestamp timeWokeUp, Timestamp timeGoneToBed){

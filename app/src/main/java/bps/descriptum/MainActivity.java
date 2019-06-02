@@ -2,32 +2,29 @@ package bps.descriptum;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.widget.DatePicker;
 
+import bps.descriptum.perstistence.Day;
 import bps.descriptum.utilities.InjectorUtil;
-import bps.descriptum.view.DayListAdapter;
 import bps.descriptum.viewmodel.DaysViewModel;
 import bps.descriptum.viewmodel.DaysViewModelFactory;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private DaysViewModel mDaysViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        RecyclerView daysView = findViewById(R.id.daysview);
-        final DayListAdapter adapter = new DayListAdapter(this);
-        daysView.setAdapter(adapter);
-        daysView.setLayoutManager(new LinearLayoutManager(this));
-
         DaysViewModelFactory daysViewModelFactory = InjectorUtil.provideDaysViewModelFactory(this);
         mDaysViewModel = ViewModelProviders.of(this, daysViewModelFactory).get(DaysViewModel.class);
-        mDaysViewModel.getAllDays().observe(this, days -> adapter.setDays(days));
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        mDaysViewModel.insertOrUpdate(new Day(year,  month,  dayOfMonth));
     }
 }

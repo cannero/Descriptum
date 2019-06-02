@@ -21,4 +21,7 @@ public interface DayDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertOrUpdateDay(Day day);
+
+    @Query("DELETE FROM days")
+    void deleteAllDays();
 }

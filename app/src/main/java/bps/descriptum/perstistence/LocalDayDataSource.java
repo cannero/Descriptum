@@ -28,4 +28,8 @@ public class LocalDayDataSource implements DayDataSource {
     public Completable insertOrUpdateDay(Day day) {
         return mDayDao.insertOrUpdateDay(day);
     }
+
+    public void deleteAllDays() {
+        mDayDao.deleteAllDays();
+    }
 }
