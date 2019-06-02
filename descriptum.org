@@ -1,6 +1,8 @@
 * Open points
 ** ViewDataBinding
 https://developer.android.com/topic/libraries/data-binding
+https://www.vogella.com/tutorials/AndroidDatabinding/article.html
+https://developer.android.com/topic/libraries/data-binding/
 * Done
 ** DONE unique key on date
 remove time, only keep date

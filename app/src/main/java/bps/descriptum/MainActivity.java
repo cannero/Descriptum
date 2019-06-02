@@ -1,6 +1,7 @@
 package bps.descriptum;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.DatePickerDialog;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        DataBindingUtil.setContentView(this, R.layout.activity_main);
         DaysViewModelFactory daysViewModelFactory = InjectorUtil.provideDaysViewModelFactory(this);
         mDaysViewModel = ViewModelProviders.of(this, daysViewModelFactory).get(DaysViewModel.class);
     }

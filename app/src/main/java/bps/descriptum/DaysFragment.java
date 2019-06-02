@@ -1,6 +1,5 @@
 package bps.descriptum;
 
-import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -14,13 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Date;
-
-import bps.descriptum.perstistence.Day;
 import bps.descriptum.utilities.InjectorUtil;
 import bps.descriptum.view.DatePickerDialogFragment;
 import bps.descriptum.view.DayListAdapter;
