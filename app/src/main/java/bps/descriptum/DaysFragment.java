@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import bps.descriptum.databinding.FragmentDaysBinding;
 import bps.descriptum.utilities.InjectorUtil;
 import bps.descriptum.view.DatePickerDialogFragment;
 import bps.descriptum.view.DayListAdapter;
@@ -28,9 +29,9 @@ public class DaysFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View result = inflater.inflate(R.layout.fragment_days, container, false);
-        return result;
+        FragmentDaysBinding binding = FragmentDaysBinding.inflate(inflater, container, false);
+
+        return binding.getRoot();
     }
 
     @Override
@@ -38,13 +39,12 @@ public class DaysFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Context context = getContext();
         RecyclerView daysView = getView().findViewById(R.id.daysview);
-        final DayListAdapter adapter = new DayListAdapter(context);
+        final DayListAdapter adapter = new DayListAdapter();
         daysView.setAdapter(adapter);
-        daysView.setLayoutManager(new LinearLayoutManager(context));
 
         DaysViewModelFactory daysViewModelFactory = InjectorUtil.provideDaysViewModelFactory(context);
         mDaysViewModel = ViewModelProviders.of(this, daysViewModelFactory).get(DaysViewModel.class);
-        mDaysViewModel.getAllDays().observe(this, days -> adapter.setDays(days));
+        mDaysViewModel.getAllDays().observe(this, days -> adapter.submitList(days));
 
         FloatingActionButton floatingActionButton = getView().findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {

@@ -55,4 +55,36 @@ public class Day {
     public Timestamp getTimeGoneToBed(){
         return mTimeGoneToBed;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Day other = (Day) obj;
+        if (!getDate().equals(other.getDate())) {
+            return false;
+        }
+
+        if (getTimeWokeUp() == null) {
+            if (other.getTimeWokeUp() != null) {
+                return false;
+            }
+        } else if (!getTimeWokeUp().equals(other.getTimeWokeUp())) {
+            return false;
+        }
+
+        if (getTimeGoneToBed() == null) {
+            if (other.getTimeGoneToBed() != null) {
+                return false;
+            }
+        } else if (!getTimeGoneToBed().equals(other.getTimeGoneToBed())) {
+            return false;
+        }
+
+        return true;
+    }
 }
