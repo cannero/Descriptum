@@ -1,9 +1,7 @@
 package bps.descriptum.view;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
@@ -14,16 +12,21 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import bps.descriptum.R;
-import bps.descriptum.perstistence.Day;
+import bps.descriptum.databinding.RecyclerviewDayItemBinding;
+import bps.descriptum.persistence.Day;
 
 public class DayListAdapter extends ListAdapter<Day, DayListAdapter.DayListItemViewHolder> {
     class DayListItemViewHolder extends RecyclerView.ViewHolder {
-        private final TextView dateTextView;
+        private final RecyclerviewDayItemBinding binding;
 
-        private DayListItemViewHolder(View itemView) {
-            super(itemView);
-            dateTextView = itemView.findViewById(R.id.textview_day_item);
+        private DayListItemViewHolder(RecyclerviewDayItemBinding binding){
+            super(binding.getRoot());
+            this.binding = binding;
+        }
+
+        public void bind(Day item){
+            binding.setDay(item);
+            binding.executePendingBindings();
         }
     }
 
@@ -34,9 +37,8 @@ public class DayListAdapter extends ListAdapter<Day, DayListAdapter.DayListItemV
     @NonNull
     @Override
     public DayListItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_day_item, parent, false);
-        return new DayListItemViewHolder(itemView);
+        return new DayListItemViewHolder(RecyclerviewDayItemBinding.inflate(
+                LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
@@ -46,7 +48,8 @@ public class DayListAdapter extends ListAdapter<Day, DayListAdapter.DayListItemV
         SimpleDateFormat simpleDateFormat =
                 new SimpleDateFormat("EE MMM dd yyyy", Locale.getDefault());
         simpleDateFormat.setTimeZone(timeZone);
-        holder.dateTextView.setText(simpleDateFormat.format(current.getDate()));
+        //holder.dateTextView.setText(simpleDateFormat.format(current.getDate()));
+        holder.bind(current);
     }
 
     public static final DiffUtil.ItemCallback<Day> DIFF_CALLBACK =

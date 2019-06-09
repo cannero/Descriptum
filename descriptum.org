@@ -3,6 +3,11 @@
 https://developer.android.com/topic/libraries/data-binding
 https://www.vogella.com/tutorials/AndroidDatabinding/article.html
 https://developer.android.com/topic/libraries/data-binding/
+*** add binding adapter
+for view holder in daylist
+** viewModelScope for data insertion?
+androidx lifecycle has to be updated to at least 2.1.0
+on which thread do coroutines run?
 * Done
 ** DONE unique key on date
 remove time, only keep date

@@ -51,10 +51,7 @@ public class DaysFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DatePickerDialogFragment datePicker = new DatePickerDialogFragment();
-                datePicker.show(getFragmentManager(), "uniqueTag");
-                //TODO show day selector
-                //show days detail fragment
-                //add day to db in detail fragment
+                datePicker.show(getFragmentManager(), "addDayDatePicker");
             }
         });
     }

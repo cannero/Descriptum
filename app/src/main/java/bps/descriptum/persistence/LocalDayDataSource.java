@@ -1,4 +1,4 @@
-package bps.descriptum.perstistence;
+package bps.descriptum.persistence;
 
 import java.util.Date;
 import java.util.List;

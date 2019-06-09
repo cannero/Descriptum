@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.Date;
 
-import bps.descriptum.perstistence.Day;
+import bps.descriptum.persistence.Day;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package bps.descriptum.perstistence;
+package bps.descriptum.persistence;
 
 import java.sql.Timestamp;
 import java.util.Calendar;

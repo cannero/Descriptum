@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 
 import bps.descriptum.DayDataSource;
-import bps.descriptum.perstistence.Day;
+import bps.descriptum.persistence.Day;
 import bps.descriptum.rx.SchedulerProvider;
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -30,6 +30,7 @@ public class DaysViewModel extends ViewModel {
         mSchedulerProvider = schedulerProvider;
         observeGetAllDays();
         //// TODO: 5/25/2019 remove
+
         Executors.newSingleThreadExecutor().submit(() -> {
             mDayDataSource.deleteAllDays();
             insertOrUpdateDay(new Day(2017, 11, 8));

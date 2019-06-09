@@ -8,7 +8,7 @@ import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.widget.DatePicker;
 
-import bps.descriptum.perstistence.Day;
+import bps.descriptum.persistence.Day;
 import bps.descriptum.utilities.InjectorUtil;
 import bps.descriptum.viewmodel.DaysViewModel;
 import bps.descriptum.viewmodel.DaysViewModelFactory;

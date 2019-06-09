@@ -3,8 +3,8 @@ package bps.descriptum.utilities;
 import android.content.Context;
 
 import bps.descriptum.DayDataSource;
-import bps.descriptum.perstistence.DaysDatabase;
-import bps.descriptum.perstistence.LocalDayDataSource;
+import bps.descriptum.persistence.DaysDatabase;
+import bps.descriptum.persistence.LocalDayDataSource;
 import bps.descriptum.rx.AppSchedulerProvider;
 import bps.descriptum.viewmodel.DaysViewModelFactory;
 

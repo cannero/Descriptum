@@ -3,7 +3,7 @@ package bps.descriptum;
 import java.util.Date;
 import java.util.List;
 
-import bps.descriptum.perstistence.Day;
+import bps.descriptum.persistence.Day;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;

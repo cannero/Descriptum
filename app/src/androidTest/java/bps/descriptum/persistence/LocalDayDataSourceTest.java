@@ -11,9 +11,6 @@ import java.util.Date;
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.room.Room;
 import androidx.test.InstrumentationRegistry;
-import bps.descriptum.perstistence.Day;
-import bps.descriptum.perstistence.DaysDatabase;
-import bps.descriptum.perstistence.LocalDayDataSource;
 
 public class LocalDayDataSourceTest {
     @Rule
