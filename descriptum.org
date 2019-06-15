@@ -1,10 +1,7 @@
 * Open points
-** ViewDataBinding
-https://developer.android.com/topic/libraries/data-binding
-https://www.vogella.com/tutorials/AndroidDatabinding/article.html
-https://developer.android.com/topic/libraries/data-binding/
-*** add binding adapter
-for view holder in daylist
+** days detail fragment
+- show
+- edit
 ** viewModelScope for data insertion?
 androidx lifecycle has to be updated to at least 2.1.0
 on which thread do coroutines run?
@@ -19,3 +16,10 @@ Calendar now = Calendar.getInstance();
         now.set(Calendar.SECOND, 0);
         now.getTime()
 see https://stackoverflow.com/questions/17821601/set-time-to-000000
+** DONE ViewDataBinding
+   CLOSED: [2019-06-15 Sat 09:38]
+https://developer.android.com/topic/libraries/data-binding
+https://www.vogella.com/tutorials/AndroidDatabinding/article.html
+https://developer.android.com/topic/libraries/data-binding/
+*** add binding adapter
+for view holder in daylist

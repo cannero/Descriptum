@@ -8,10 +8,6 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
-import java.util.Locale;
-import java.util.TimeZone;
-
 import bps.descriptum.databinding.RecyclerviewDayItemBinding;
 import bps.descriptum.persistence.Day;
 
@@ -44,11 +40,6 @@ public class DayListAdapter extends ListAdapter<Day, DayListAdapter.DayListItemV
     @Override
     public void onBindViewHolder(@NonNull DayListItemViewHolder holder, int position) {
         Day current = getItem(position);
-        TimeZone timeZone = TimeZone.getTimeZone("UTC");
-        SimpleDateFormat simpleDateFormat =
-                new SimpleDateFormat("EE MMM dd yyyy", Locale.getDefault());
-        simpleDateFormat.setTimeZone(timeZone);
-        //holder.dateTextView.setText(simpleDateFormat.format(current.getDate()));
         holder.bind(current);
     }
 
