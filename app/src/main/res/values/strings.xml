@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Descriptum</string>
     <string name="no_days">no days</string>
+    <string name="day_added">TODO: Day added</string>
 </resources>

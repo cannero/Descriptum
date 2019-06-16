@@ -1,11 +1,19 @@
 * Open points
 ** days detail fragment
+create new view model with LiveData day, insert function
 - show
 - edit
+- button add/cancel
+** move click listener to activity
+floatingActionButton in DaysFragement should be in activity
 ** viewModelScope for data insertion?
 androidx lifecycle has to be updated to at least 2.1.0
 on which thread do coroutines run?
 * Done
+** use shared view model 
+from activity, which sets the selected day** change main layout
+use FrameLayout to switch between two Fragments
+
 ** DONE unique key on date
 remove time, only keep date
 check with date picker, what does it return?
