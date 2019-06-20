@@ -4,6 +4,11 @@ create new view model with LiveData day, insert function
 - show
 - edit
 - button add/cancel
+*** change details layout
+use linear layout, horizontal for rows, set clicklistener to layout
+use android layout inspector
+** add NonNull on timeWokeUp/GoneToBed
+remove current database? otherwise app does not start
 ** move click listener to activity
 floatingActionButton in DaysFragement should be in activity
 ** viewModelScope for data insertion?

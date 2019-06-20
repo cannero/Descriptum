@@ -1,6 +1,5 @@
 package bps.descriptum.persistence;
 
-import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -21,10 +20,10 @@ public class Day {
     private Date mDate;
 
     @ColumnInfo(name = "timeWokeUp")
-    private Timestamp mTimeWokeUp;
+    private HourAndMinute mTimeWokeUp;
 
     @ColumnInfo(name = "timeGoneToBed")
-    private Timestamp mTimeGoneToBed;
+    private HourAndMinute mTimeGoneToBed;
 
     @Ignore
     public Day(int year, int month, int day){
@@ -36,9 +35,12 @@ public class Day {
         calendarDate.set(Calendar.SECOND, 0);
         calendarDate.set(Calendar.MILLISECOND, 0);
         mDate = calendarDate.getTime();
+
+        mTimeWokeUp = new HourAndMinute(6, 0);
+        mTimeGoneToBed = new HourAndMinute(22, 30);
     }
 
-    public Day(Date date, Timestamp timeWokeUp, Timestamp timeGoneToBed){
+    public Day(Date date, HourAndMinute timeWokeUp, HourAndMinute timeGoneToBed){
         mDate = date;
         mTimeWokeUp = timeWokeUp;
         mTimeGoneToBed = timeGoneToBed;
@@ -48,12 +50,16 @@ public class Day {
         return mDate;
     }
 
-    public Timestamp getTimeWokeUp(){
+    public HourAndMinute getTimeWokeUp(){
         return mTimeWokeUp;
     }
 
-    public Timestamp getTimeGoneToBed(){
+    public HourAndMinute getTimeGoneToBed(){
         return mTimeGoneToBed;
+    }
+
+    public void setWokeUpTime(int hour, int minute){
+        mTimeWokeUp = new HourAndMinute(hour, minute);
     }
 
     @Override

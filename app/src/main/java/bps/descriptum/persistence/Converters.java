@@ -1,6 +1,5 @@
 package bps.descriptum.persistence;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import androidx.room.TypeConverter;
@@ -18,12 +17,12 @@ public class Converters {
     }
 
     @TypeConverter
-    public static Timestamp timestampFromUnixTime(Long unixTime){
-        return unixTime == null ? new Timestamp(0) : new Timestamp(unixTime);
+    public static HourAndMinute hourAndMinuteFromMinutes(Integer minute){
+        return minute == null ? new HourAndMinute(0) : new HourAndMinute(minute);
     }
 
     @TypeConverter
-    public static Long timestampToUnixTime(Timestamp timestamp){
-        return timestamp == null ? 0 : timestamp.getTime();
+    public static Integer hourAndMinuteToMinutes(HourAndMinute hourAndMinute){
+        return hourAndMinute == null ? 0 : hourAndMinute.getHourAndMinuteAsMinutes();
     }
 }

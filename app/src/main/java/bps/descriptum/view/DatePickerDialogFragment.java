@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import java.util.Calendar;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A date picker dialog.
  */
 public class DatePickerDialogFragment extends DialogFragment {
 

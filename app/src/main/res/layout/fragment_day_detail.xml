@@ -4,10 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
+            name="clickListenerWokeUp"
+            type="android.view.View.OnClickListener"/>
+        <variable
             name="viewModel"
             type="bps.descriptum.viewmodel.DayDetailViewModel" />
     </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".DayDetailFragment">
@@ -17,28 +22,63 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:id="@+id/time_woke_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="12:25"
+                app:layout_constraintStart_toEndOf="@+id/text_time_woke_up"
+                app:layout_constraintTop_toBottomOf="@+id/date" />
+
+            <TextView
                 android:id="@+id/date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginTop="@dimen/margin_normal"
                 android:layout_marginEnd="@dimen/margin_small"
-                android:text="@{viewModel.getDay().getDate().toString()}"
+                android:text="35. April 2022"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-            
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
-                android:id="@+id/time_woke_up"
+                android:id="@+id/text_time_woke_up"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_normal"
-                android:layout_marginTop="@dimen/margin_normal"
-                android:layout_marginEnd="@dimen/margin_normal"
                 android:text="test test"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/date"/>
+                app:layout_constraintTop_toBottomOf="@+id/date" />
+
+            <TextView
+                android:id="@+id/time_gone_to_bed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="12:25"
+                app:layout_constraintStart_toEndOf="@+id/text_time_gone_to_bed"
+                app:layout_constraintTop_toBottomOf="@+id/time_woke_up" />
+
+            <TextView
+                android:id="@+id/text_time_gone_to_bed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="TextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_time_woke_up" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="90dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:onClick="@{clickListenerWokeUp}"
+                app:layout_constraintStart_toEndOf="@+id/time_woke_up"
+                app:layout_constraintTop_toBottomOf="@+id/date"
+                app:srcCompat="@android:drawable/ic_menu_edit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
